@@ -1,0 +1,19 @@
+<app-add-payment
+  (paymentCreated)="paymentCreated.emit($event)"
+></app-add-payment>
+
+<ng-container *ngIf="payments">
+  <app-payment-table
+    [payments]="payments"
+    (monthsSelectionChanged)="monthsSelectionChanged.emit($event)"
+    (paymentRemoved)="paymentRemoved.emit($event)"
+  ></app-payment-table>
+
+  <app-payment-calculator
+    [payments]="payments"
+  ></app-payment-calculator>
+</ng-container>
+
+<div class="loading-container" *ngIf="!isDataLoaded">
+  <mat-spinner></mat-spinner>
+</div>

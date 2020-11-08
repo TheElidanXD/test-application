@@ -1,0 +1,18 @@
+:host {
+  .add-payment-panel {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 0 16px;
+
+    .form-container {
+      width: 100%;
+
+      .add-payment-input {
+        width: 30%;
+        max-width: 400px;
+        margin-right: 16px;
+        padding: 6px 0;
+      }
+    }
+  }
+}

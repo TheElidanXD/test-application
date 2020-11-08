@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  padding: 20px;
+
+  app-payment-smart {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
