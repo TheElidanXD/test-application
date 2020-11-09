@@ -15,17 +15,28 @@ import { Payment } from '../models/payment.model';
       ></app-payment-presentation>`,
 })
 export class PaymentSmartComponent implements OnInit {
-
+  /**
+   * Array of payments
+   */
   payments: Payment[];
 
+  /**
+   * Is data loaded flag
+   */
   isDataLoaded = false;
 
   constructor(private paymentDatasource: PaymentDatasource) { }
 
+  /**
+   * On init hook
+   */
   ngOnInit(): void {
     this.getPayments();
   }
 
+  /**
+   * Gets payments
+   */
   getPayments(): void {
     this.isDataLoaded = false;
     this.paymentDatasource.getPayments().subscribe(response => {
@@ -36,12 +47,16 @@ export class PaymentSmartComponent implements OnInit {
     });
   }
 
+  /**
+   * Updates selected months of payment
+   */
   onMonthsSelectionChanged(payment: Payment): void {
-    this.paymentDatasource.updatePayment(payment).subscribe(() => {
-      this.isDataLoaded = true;
-    });
+    this.paymentDatasource.updatePayment(payment).subscribe(() => {});
   }
 
+  /**
+   * Creates payment
+   */
   onPaymentCreated(payment: Payment): void {
     this.isDataLoaded = false;
     this.paymentDatasource.createPayment(payment).subscribe(response => {
@@ -51,6 +66,9 @@ export class PaymentSmartComponent implements OnInit {
     });
   }
 
+  /**
+   * Removes payment
+   */
   onPaymentRemoved(id: number): void {
     this.isDataLoaded = false;
     this.paymentDatasource.removePayment(id).subscribe(response => {

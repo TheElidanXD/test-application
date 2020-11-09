@@ -3,29 +3,42 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Payment } from '../models/payment.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaymentDatasource {
 
-  private readonly SERVER_URL = 'http://localhost:8080/api/payments';
+  private serverUrl = `${environment.serverUrl}/payments`;
 
   constructor(private httpClient: HttpClient) { }
 
+  /**
+   * Gets payments
+   */
   getPayments(): Observable<Payment[]> {
-    return this.httpClient.get(this.SERVER_URL) as Observable<Payment[]>;
+    return this.httpClient.get<Payment[]>(this.serverUrl);
   }
 
+  /**
+   * Creates payment
+   */
   createPayment(payment: any): Observable<Payment> {
-    return this.httpClient.post(this.SERVER_URL, payment) as Observable<Payment>;
+    return this.httpClient.post<Payment>(this.serverUrl, payment);
   }
 
+  /**
+   * Updates selected months of payment
+   */
   updatePayment(payment: Payment): Observable<Payment> {
-    return this.httpClient.put(`${this.SERVER_URL}/${payment.id}`, payment) as Observable<Payment>;
+    return this.httpClient.put<Payment>(`${this.serverUrl}/${payment.id}`, payment);
   }
 
+  /**
+   * Removes payment
+   */
   removePayment(id: number): Observable<any> {
-    return this.httpClient.delete(`${this.SERVER_URL}/${id}`) as Observable<any>;
+    return this.httpClient.delete(`${this.serverUrl}/${id}`);
   }
 }

@@ -10,7 +10,7 @@ export class NumberInputDirective {
   constructor(private el: ElementRef) {}
 
   @HostListener('keydown', ['$event'])
-  onKeyDown(event: KeyboardEvent): void {
+  private onKeyDown(event: KeyboardEvent): void {
     if (this.specialKeys.indexOf(event.keyCode) !== -1) {
       return;
     }
@@ -19,13 +19,13 @@ export class NumberInputDirective {
     }
   }
   @HostListener('paste', ['$event'])
-  onPaste(event: ClipboardEvent): void {
+  private onPaste(event: ClipboardEvent): void {
     if (!this.regex.test(event.clipboardData.getData('text/plain'))) {
       event.preventDefault();
     }
   }
   @HostListener('drop', ['$event'])
-  onDrop(event: DragEvent): void {
+  private onDrop(event: DragEvent): void {
     if (!this.regex.test(event.dataTransfer.getData('text/plain'))) {
       event.preventDefault();
     }

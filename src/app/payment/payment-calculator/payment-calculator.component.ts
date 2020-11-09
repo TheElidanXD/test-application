@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import * as moment from 'moment';
 
 import { Payment } from '../../models/payment.model';
+import { PaymentTextKeys } from '../payment-text-keys';
 
 @Component({
   selector: 'app-payment-calculator',
@@ -9,12 +10,25 @@ import { Payment } from '../../models/payment.model';
   styleUrls: ['./payment-calculator.component.scss']
 })
 export class PaymentCalculatorComponent {
+  /**
+   * Text keys
+   */
+  readonly paymentTextKeys: typeof PaymentTextKeys = PaymentTextKeys;
+
+  /**
+   * Current year
+   */
   currentYear = moment().year();
 
+  /**
+   * Array of payments
+   */
   @Input() payments: Payment[];
 
-  constructor() { }
-
+  /**
+   * Calculates the total costs for all payments
+   * @return total cost
+   */
   calculateCost(): number {
     if (this.payments) {
       let result = 0;

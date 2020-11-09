@@ -1,22 +1,22 @@
 <mat-card class="add-payment-panel mat-elevation-z2">
   <div class="form-container">
     <mat-form-field class="add-payment-input">
-      <mat-label>Payment name</mat-label>
+      <mat-label>{{paymentTextKeys.PAYMENT_NAME}}</mat-label>
 
       <input matInput [formControl]="paymentName">
 
-      <mat-error *ngIf="paymentName?.hasError('required')">{{requiredErrorMessage}}</mat-error>
+      <mat-error *ngIf="paymentName?.hasError('required')">{{paymentTextKeys.REQUIRED_ERROR}}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="add-payment-input">
-      <mat-label>Cost per day</mat-label>
+      <mat-label>{{paymentTextKeys.DAILY_COST}}</mat-label>
 
       <input matInput appNumberInputDirective [formControl]="paymentCost">
 
-      <mat-error *ngIf="paymentCost?.hasError('required')">{{requiredErrorMessage}}</mat-error>
-      <mat-error *ngIf="paymentCost?.hasError('min')">Must be greater than 0</mat-error>
+      <mat-error *ngIf="paymentCost?.hasError('required')">{{paymentTextKeys.REQUIRED_ERROR}}</mat-error>
+      <mat-error *ngIf="paymentCost?.hasError('min')">{{paymentTextKeys.GRATER_THAN_ZERO_ERROR}}</mat-error>
     </mat-form-field>
   </div>
 
-  <button mat-button [disabled]="paymentForm.invalid" (click)="createPayment()">Create</button>
+  <button mat-button [disabled]="paymentForm.invalid" (click)="createPayment()">{{paymentTextKeys.CREATE}}</button>
 </mat-card>

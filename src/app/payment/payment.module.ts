@@ -15,7 +15,7 @@ import { PaymentDatasource } from '../datasources/payment.datasource';
 import { PaymentTableComponent } from './payment-table/payment-table.component';
 import { PaymentSmartComponent } from './payment.smart.component';
 import { PaymentCalculatorComponent } from './payment-calculator/payment-calculator.component';
-import { NumberInputDirective } from '../directives/number-input.directive';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,7 @@ import { NumberInputDirective } from '../directives/number-input.directive';
     PaymentPresentationComponent,
     PaymentTableComponent,
     PaymentSmartComponent,
-    PaymentCalculatorComponent,
-    NumberInputDirective
+    PaymentCalculatorComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +35,8 @@ import { NumberInputDirective } from '../directives/number-input.directive';
     MatTableModule,
     MatCheckboxModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SharedModule
   ],
   providers: [
     PaymentDatasource
